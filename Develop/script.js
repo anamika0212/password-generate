@@ -50,16 +50,42 @@ function determineUppercase(){
     }
     return uppercaseCheck;
 }
+
+//Function used to determine whether the user wants to include numbers in the password
+function determineNumbers(){
+  numberCheck = prompt("Do you want to include numbers in your password? \n(Yes or No)");
+    numberCheck = numberCheck.toLowerCase();
+
+    if (numberCheck === null || numberCheck === ""){
+      alert("Please answer Yes or No");
+      determineNumbers();
+
+    }else if (numberCheck === "yes" || numberCheck ==="y"){
+      numberCheck = true;
+      return numberCheck;
+
+    }else if (numberCheck === "no" || numberCheck ==="n"){
+      numberCheck = false;
+      return numberCheck;
+    
+    }else {
+      alert("Please answer Yes or No");
+      determineNumbers();
+    }
+    return numberCheck;
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 //Function used to take all the input from the previous functions and generate a password using a random number generator and 
  //the charAt method 
  function generatePassword(){
-   determineLength();
-   console.log(passwordLength);
-   determineUppercase();
+  determineLength();
+  console.log(passwordLength);
+  determineUppercase();
   console.log(uppercaseCheck);
+  determineNumbers();
+  console.log(numberCheck);
 
 
    
